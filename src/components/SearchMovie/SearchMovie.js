@@ -3,7 +3,8 @@ import { Button, FormWrapper, Input } from "./SearchMovie.styled";
 import { BiSearchAlt } from "react-icons/bi";
 
 const SearchMovie = () => {
-    const [SearchParams, setSearchParams] = useSearchParams();
+    const [, setSearchParams] = useSearchParams();
+    
     
     const onSubmit = (evt) => {
         evt.preventDefault();
