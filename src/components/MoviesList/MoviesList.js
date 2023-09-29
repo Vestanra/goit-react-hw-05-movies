@@ -6,9 +6,9 @@ const MoviesList = ({ items }) => {
     
     return (
         <List>
-            {items.map(item => 
-                <li key={item.id}>
-                    <StyledLink to={`/movies/${item.id}`} state={{ from: location }}>{item.title}</StyledLink>
+            {items.map(({id, title}) => 
+                <li key={id}>
+                    <StyledLink to={`/movies/${id}`} state={{ from: location }}>{title}</StyledLink>
                 </li>
             )}
         </List>
