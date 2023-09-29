@@ -1,6 +1,9 @@
-import MoviesList from "components/MoviesList";
+import MoviesList from "components/MoviesList/MoviesList";
 import { useEffect, useState } from "react";
 import { fetchTrendingMovie } from "service/api";
+import { Title } from "./HomePage.styled";
+import { LineWave } from 'react-loader-spinner';
+import { Error } from "components/Error/Error";
 
 const HomePage = () => {
     const [movies, setMovies] = useState([]);
@@ -8,31 +11,28 @@ const HomePage = () => {
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        const fetchMovies = async () => {
+         const fetchMovies = async () => {
             try {
                 setLoading(true);
                 setError(false);
                 const movies = await fetchTrendingMovie();
                 setMovies(movies.results);
-                console.log(movies.results);
             } catch (error) {
-                console.log(error);
                 setError(true);
             } finally {
                 setLoading(false);
             }
         }
-        fetchMovies()
+        fetchMovies();
     }, []);
-    
 
     return (
-        <div>
-            <h1>Trending today</h1>
-            {loading && <div>Loading...</div>}
-            {error && !loading && <div>OOPS!!!</div>}
+        <main>
+            <Title>Trending today</Title>
+            {loading && <LineWave width="100%" color = '#6a857e'/>}
+            {error && !loading && <Error/>}
             {movies.length > 0 && <MoviesList items={movies} />}
-        </div>
+        </main>
     )
 };
 
