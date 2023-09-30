@@ -11,12 +11,13 @@ const HomePage = () => {
     const [error, setError] = useState(false);
 
     useEffect(() => {
+        const controller = new AbortController();
  
         const fetchMovies = async () => {
             try {
                 setLoading(true);
                 setError(false);
-                const movies = await fetchTrendingMovie();
+                const movies = await fetchTrendingMovie({signal: controller.signal});
                 setMovies(movies.results);
             } catch (error) {
                 setError(true);
@@ -25,6 +26,10 @@ const HomePage = () => {
             }
         }
         fetchMovies();
+
+        return () => {
+            controller.abort();
+        };
     }, []);
 
     return (
