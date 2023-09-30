@@ -11,7 +11,8 @@ const HomePage = () => {
     const [error, setError] = useState(false);
 
     useEffect(() => {
-         const fetchMovies = async () => {
+ 
+        const fetchMovies = async () => {
             try {
                 setLoading(true);
                 setError(false);
