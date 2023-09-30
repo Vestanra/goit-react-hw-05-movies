@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { Header, List, StyledNavLink } from "./SharedLayout.styled";
-const { Outlet } = require("react-router-dom");
+import { Outlet } from "react-router-dom";
+import { LineWave } from 'react-loader-spinner';
 
 
 const SharedLayout = () => {
@@ -16,7 +17,7 @@ const SharedLayout = () => {
                     </li>
                 </List>
             </Header>
-            <Suspense fallback={<div>Loading...</div>}> 
+            <Suspense fallback={<LineWave width="100%" color = '#6a857e'/>}> 
                 <Outlet />
             </Suspense>
         </div>
