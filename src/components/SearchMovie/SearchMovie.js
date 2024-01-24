@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import { Button, FormWrapper, Input } from "./SearchMovie.styled";
+import { Button, FormWrapper, Input, Svg, Text } from "./SearchMovie.styled";
 import { BiSearchAlt } from "react-icons/bi";
 
 const SearchMovie = () => {
@@ -16,7 +16,7 @@ const SearchMovie = () => {
         <div>
             <FormWrapper onSubmit={onSubmit}>
                 <Input name="query" type="text"/>
-                <Button type="submit"><BiSearchAlt color="white"/><span>search</span></Button>
+                <Button type="submit"><Text>search</Text><Svg/></Button>
             </FormWrapper>
         </div>
     )

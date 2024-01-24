@@ -6,6 +6,9 @@ gap: 16px;
 text-align: justify;
 padding-bottom: 24px;
 border-bottom: 1px solid #6a857e;
+@media (max-width: 767px){
+    flex-direction: column;
+  }
 `;
 
 export const MovieInfo = styled.div`
