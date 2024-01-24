@@ -17,7 +17,7 @@ const HomePage = () => {
             try {
                 setLoading(true);
                 setError(false);
-                const movies = await fetchTrendingMovie({signal: controller.signal});
+                const movies = await fetchTrendingMovie(controller);
                 setMovies(movies.results);
             } catch (error) {
                 setError(true);

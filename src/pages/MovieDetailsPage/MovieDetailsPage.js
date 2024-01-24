@@ -15,6 +15,7 @@ const MovieDetailsPage = () => {
     const backLink = useRef(location.state?.from ?? '/')
 
     useEffect(() => {
+        const controller = new AbortController();
         const fetchMovie = async () => {
             if (!movieId) {
                 return
@@ -22,7 +23,7 @@ const MovieDetailsPage = () => {
             try {
                 setLoading(true);
                 setError(false);
-                const response = await fetchMovieById(movieId);
+                const response = await fetchMovieById(movieId, controller);
                 setMovie(response);
             } catch(error) {
                 setError(true);
@@ -31,6 +32,9 @@ const MovieDetailsPage = () => {
             };    
         }  
         fetchMovie();
+        return () => {
+            controller.abort();
+        };
     }, [movieId])
  
     return (
