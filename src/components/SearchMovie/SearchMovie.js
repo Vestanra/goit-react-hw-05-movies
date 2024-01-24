@@ -1,6 +1,5 @@
 import { useSearchParams } from "react-router-dom";
 import { Button, FormWrapper, Input, Svg, Text } from "./SearchMovie.styled";
-import { BiSearchAlt } from "react-icons/bi";
 
 const SearchMovie = () => {
     const [, setSearchParams] = useSearchParams();
